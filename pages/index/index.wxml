@@ -1,0 +1,41 @@
+<view class="container">
+<!-- 轮播图 -->
+  <swiper
+    autoplay="{{true}}"
+    circular="{{true}}"
+    indicator-dots="{{true}}"
+    interval="3000"
+    class="swiper-container"
+    >
+    <swiper-item class="swiper-item">
+      <image src="/images/fabric1.jpg" class="slide-image" />
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <image src="https://pic.52112.com/180209/180209_96/y2uHjZVhro.jpg" class="slide-image"  />
+    </swiper-item>
+    <swiper-item class="swiper-item">
+      <image src="https://img.51miz.com/Element/00/78/71/28/6b6ed20e_E787128_b259e253.png" class="slide-image" />
+    </swiper-item>
+  </swiper>
+<!-- 首页导航 -->
+  <view class="nav-container">
+    <navigator class="nav-card" url="/pages/category/category" open-type="navigate">
+      <view class="nav-title">分类</view>
+      <!-- 这里可以添加加载动画或其他内容 -->
+    </navigator>
+    <navigator class="nav-card" url="/pages/category/category" open-type="navigate">
+      <view class="nav-title">其他</view>
+      <!-- 这里可以添加加载动画或其他内容 -->
+    </navigator>
+  </view>
+<!-- 产品展示 -->
+  <view class="subtitle">面料</view>
+  <view class="fabric">
+    <block wx:for="{{fabric}}" wx:key="id">
+      <view class="fabric-item" data-product-id="{{item.id}}" bindtap="goToProduct">
+        <image class="fabric-image" src="{{item.image}}"></image>
+        <view class='card-describtion'><text class="fabric-name">{{item.name}}</text></view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+/* 全局样式 */
+page {
+  background-color: #f8f8f8;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* 通用链接样式 */
+.link {
+  color: #1aad19;
+  text-decoration: none;
+}
+
+.link:active {
+  opacity: 0.8;
+}

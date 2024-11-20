@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="header">
+    <text class="title">阔以</text>
+  </view>
+  <view class="categories">
+    <block wx:for="{{categories}}" wx:key="id" wx:for-item="category">
+      <view class="category-item" data-category-id="{{category.id}}" bindtap="goToProductList">
+        <image class="category-image" src="/images/{{category.image}}" mode="aspectFill" />
+        <text class="category-name">{{category.name}}</text>
+      </view>
+    </block>
+  </view>
+</view>

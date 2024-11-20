@@ -1,0 +1,25 @@
+<!-- pages/product-detail/product-detail.wxml -->
+<view class="product-detail-container">
+<!-- 照片（轮播效果未完成） -->
+  <view class="product-detail-image">
+    <image 
+    show-menu-by-longpress="{{ true }}" 
+    lazy-load="{{ true }}" 
+    src="{{product.image}}" 
+    mode="scaleToFill" 
+    class="product-img" />
+  </view>
+  <!-- 价格卡 -->
+  <view class="product-detail-price">
+    <text class="price-tag">￥{{product.price}}</text>
+  </view>
+  <!-- 描述 -->
+  <view class="product-detail-description">
+    <text>{{product.description}}</text>
+  </view>
+  <!-- 功能 -->
+  <view class="product-detail-actions">
+    <button class="buy-button">购买</button>
+  </view>
+  <!-- 可以添加更多信息，如规格、库存、购买按钮等 -->
+</view>
