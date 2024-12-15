@@ -1,12 +1,53 @@
 <view class="container">
-  <view class="header">
-    <text class="title">阔以</text>
+  <!-- 筛选区域 -->
+  <view class="filter-section">
+    <!-- 季节筛选 -->
+    <view class="filter-group">
+      <view class="filter-title">季节</view>
+      <view class="filter-options">
+        <view
+          wx:for="{{seasons}}"
+          wx:key="index"
+          class="filter-tag {{selectedSeason === item ? 'active' : ''}}"
+          data-type="season"
+          data-value="{{item}}"
+          bindtap="handleFilter"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 用途筛选 -->
+    <view class="filter-group">
+      <view class="filter-title">用途</view>
+      <view class="filter-options">
+        <view
+          wx:for="{{type}}"
+          wx:key="index"
+          class="filter-tag {{selectedUse === item ? 'active' : ''}}"
+          data-type="use"
+          data-value="{{item}}"
+          bindtap="handleFilter"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
   </view>
-  <view class="categories">
-    <block wx:for="{{categories}}" wx:key="id" wx:for-item="category">
-      <view class="category-item" data-category-id="{{category.id}}" bindtap="goToProductList">
-        <image class="category-image" src="/images/{{category.image}}" mode="aspectFill" />
-        <text class="category-name">{{category.name}}</text>
+
+  <!-- 产品展示区 -->
+  <view class="fabric">
+    <block wx:for="{{filteredFabric}}" wx:key="id">
+      <view class="fabric-item" bindtap="goToProduct" data-product-id="{{item.id}}">
+        <view class="fabric-image">
+          <image src="{{item.images[0]}}" mode="widthFix"/>
+        </view>
+        <view class='card-description'>
+          <view class="fabric-name">{{item.name}}</view>
+          <view class="price">{{item.price}}</view>
+          <view class="fabric-tag">{{item.season}}</view>
+        </view>
       </view>
     </block>
   </view>

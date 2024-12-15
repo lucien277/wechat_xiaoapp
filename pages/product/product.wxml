@@ -1,25 +1,59 @@
 <!-- pages/product-detail/product-detail.wxml -->
-<view class="product-detail-container">
-<!-- 照片（轮播效果未完成） -->
-  <view class="product-detail-image">
-    <image 
-    show-menu-by-longpress="{{ true }}" 
-    lazy-load="{{ true }}" 
-    src="{{product.image}}" 
-    mode="scaleToFill" 
-    class="product-img" />
+<view class="product-detail">
+  <!-- 轮播图部分 -->
+  <swiper class="product-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000">
+    <swiper-item wx:for="{{product.images}}" wx:key="index">
+      <image src="{{item}}" mode="aspectFill" class="slide-image" bindtap="previewImage" data-url="{{item}}"/>
+    </swiper-item>
+  </swiper>
+
+  <!-- 基本信息部分 -->
+  <view class="product-info">
+    <view class="product-title">{{product.name}}</view>
+    <view class="product-price">¥{{product.price}}</view>
+    <view class="product-tags">
+      <text class="tag">{{product.season}}</text>
+      <text class="tag">{{product.use}}</text>
+    </view>
   </view>
-  <!-- 价格卡 -->
-  <view class="product-detail-price">
-    <text class="price-tag">￥{{product.price}}</text>
+
+  <!-- 详细信息部分 -->
+  <view class="product-details">
+    <view class="detail-section">
+      <view class="section-title">产品参数</view>
+      <view class="params-grid">
+        <view class="param-item">
+          <text class="param-label">材质</text>
+          <text class="param-value">{{product.material}}</text>
+        </view>
+        <view class="param-item">
+          <text class="param-label">克重</text>
+          <text class="param-value">{{product.weight}}</text>
+        </view>
+        <view class="param-item">
+          <text class="param-label">幅宽</text>
+          <text class="param-value">{{product.width}}</text>
+        </view>
+        <view class="param-item">
+          <text class="param-label">库存</text>
+          <text class="param-value">{{product.stock}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="detail-section">
+      <view class="section-title">产品描述</view>
+      <text class="description">{{product.description}}</text>
+    </view>
   </view>
-  <!-- 描述 -->
-  <view class="product-detail-description">
-    <text>{{product.description}}</text>
+
+  <!-- 底部操作栏 -->
+  <view class="action-bar">
+    <view class="action-item" bindtap="contactService">
+      <image src="/images/客服.png" class="action-icon"/>
+      <text>客服</text>
+    </view>
+    <button class="action-button" bindtap="checkStock">查看库存</button>
+    <button class="action-button primary" bindtap="contactSupplier">联系供应商</button>
   </view>
-  <!-- 功能 -->
-  <view class="product-detail-actions">
-    <button class="buy-button">购买</button>
-  </view>
-  <!-- 可以添加更多信息，如规格、库存、购买按钮等 -->
 </view>

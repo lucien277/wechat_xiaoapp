@@ -1,4 +1,5 @@
 <view class="container">
+<view class="big-title">Textile app</view>
 <!-- 轮播图 -->
   <swiper
     autoplay="{{true}}"
@@ -8,7 +9,12 @@
     class="swiper-container"
     >
     <swiper-item class="swiper-item">
-      <image src="/images/fabric1.jpg" class="slide-image" />
+      <image
+        src="/images/fabric1.jpg"
+        class="slide-image"
+        binderror="handleImageError"
+        lazy-load="{{true}}"
+      />
     </swiper-item>
     <swiper-item class="swiper-item">
       <image src="https://pic.52112.com/180209/180209_96/y2uHjZVhro.jpg" class="slide-image"  />
@@ -17,25 +23,32 @@
       <image src="https://img.51miz.com/Element/00/78/71/28/6b6ed20e_E787128_b259e253.png" class="slide-image" />
     </swiper-item>
   </swiper>
+
 <!-- 首页导航 -->
-  <view class="nav-container">
-    <navigator class="nav-card" url="/pages/category/category" open-type="navigate">
-      <view class="nav-title">分类</view>
-      <!-- 这里可以添加加载动画或其他内容 -->
-    </navigator>
-    <navigator class="nav-card" url="/pages/category/category" open-type="navigate">
-      <view class="nav-title">其他</view>
-      <!-- 这里可以添加加载动画或其他内容 -->
+<view class="home-navigation">
+  <!-- 导航项 -->
+  <view class="nav-item" wx:for="{{navItems}}" wx:key="index">
+    <navigator url="{{item.url}}" open-type="navigate" class="nav-link">
+      <image class="nav-icon" src="{{item.icon}}" />
+      <text class="nav-text">{{item.text}}</text>
     </navigator>
   </view>
+</view>
+
 <!-- 产品展示 -->
-  <view class="subtitle">面料</view>
-  <view class="fabric">
-    <block wx:for="{{fabric}}" wx:key="id">
-      <view class="fabric-item" data-product-id="{{item.id}}" bindtap="goToProduct">
-        <image class="fabric-image" src="{{item.image}}"></image>
-        <view class='card-describtion'><text class="fabric-name">{{item.name}}</text></view>
+<view class="subtitle">面料</view>
+<view class="fabric">
+  <block wx:for="{{fabric}}" wx:key="id">
+    <view class="fabric-item" bindtap="goToProduct" data-product-id="{{item.id}}">
+      <view class="fabric-image">
+        <image src="{{item.images[0]}}" mode="widthFix"/>
       </view>
-    </block>
-  </view>
+      <view class='card-description'>
+        <view class="fabric-name">{{item.name}}</view>
+        <view class="price">{{item.price}}</view>
+        <view class="fabric-tag">{{item.season}}</view>
+      </view>
+    </view>
+  </block>
+</view>
 </view>

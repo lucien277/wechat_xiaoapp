@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="upload-form">
+    <view class="form-item">
+      <text class="label">产品名称</text>
+      <input class="input" model:value="{{productName}}" placeholder="请输入产品名称"/>
+    </view>
+
+    <view class="form-item">
+      <text class="label">产品价格</text>
+      <input class="input" type="digit" model:value="{{price}}" placeholder="请输入价格"/>
+    </view>
+
+    <view class="form-item">
+      <text class="label">产品描述</text>
+      <textarea class="textarea" model:value="{{description}}" placeholder="请输入产品描述"/>
+    </view>
+
+    <view class="form-item">
+      <text class="label">产品参数</text>
+      <textarea class="textarea" model:value="{{specifications}}" placeholder="请输入产品参数"/>
+    </view>
+
+    <view class="form-item">
+      <text class="label">图片上传</text>
+      <view class="image-uploader">
+        <view class="image-list">
+          <block wx:for="{{tempImages}}" wx:key="*this">
+            <view class="image-item">
+              <image src="{{item}}" mode="aspectFill"></image>
+              <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+            </view>
+          </block>
+          <view class="upload-btn" bindtap="chooseImage" wx:if="{{tempImages.length < 9}}">
+            <text class="plus">+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <button class="submit-btn" type="primary" bindtap="submitForm">提交</button>
+  </view>
+</view>

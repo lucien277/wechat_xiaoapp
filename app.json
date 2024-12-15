@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/product/product",
     "pages/category/category",
-    "pages/clothes/clothes"
+    "pages/upload/upload"
   ],
   "window": {
     "backgroundTextStyle":"light",
@@ -19,7 +19,7 @@
       "text": "首页",
       "iconPath": "/images/首页.png",
       "selectedIconPath": "/images/首页1.png"
-    }, 
+    },
     {
       "pagePath": "pages/category/category",
       "text": "分类",
@@ -27,15 +27,17 @@
       "selectedIconPath": "/images/分类1.png"
     },
     {
-      "pagePath": "pages/clothes/clothes",
-      "text": "服装",
-      "iconPath": "/images/服装.png",
-      "selectedIconPath": "/images/服装.png"
-    }]
+      "pagePath": "pages/upload/upload",
+      "text": "上传",
+      "iconPath": "/images/分类.png",
+      "selectedIconPath": "/images/分类1.png"
+    }
+    ]
   },
   "debug": true,
   "style": "v2",
   "useExtendedLib": {
     "weui":true
   }
+
 }
